@@ -100,6 +100,10 @@ img {
 .footer {
     text-align: center;
 }
+.footercontact {
+    text-align: center;
+    padding: 10px 0px;
+}
 
 .next {
   right: 10px;
@@ -170,3 +174,4 @@ img {
     object-fit: cover; /* keeps aspect ratio, crops if needed */
     flex-shrink: 0; /* prevents flexbox from shrinking it */
 }
+
