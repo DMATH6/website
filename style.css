@@ -6,18 +6,8 @@ body {
   padding: 1px;
 }
 
-header {
-  text-align: center;
-  padding: 50px 50px;
-  background: linear-gradient(180deg, #1a1a1a, #0a0a0a);
-}
 
-headerMassive {
-    font-size: 508px;
-    text-align: center;
-    padding: 1px 1px;
 
-}
 
 .flex-container {
     display: flex;
@@ -47,8 +37,8 @@ button:hover {
 
 main {
   max-width: 800px;
-  margin: 40px auto;
-  padding: 0 20px;
+  margin: 0 auto;
+  padding: 60px 20px;
 }
 
 img {
@@ -56,6 +46,7 @@ img {
   margin: 10px 0;
   border-radius: 8px;
 }
+
 
 
 .slideshow {
@@ -67,11 +58,12 @@ img {
 }
 
 .projectButton {
+  padding: 15%;
     font-size: 25rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 10vh; /* full screen */
+  
 }
 
 .slide.active {
@@ -110,14 +102,11 @@ img {
 }
 
 .site-header {
-    background-image: url('./images/logos/SpriteWareLogo1X2.jpg'); /* path to your image */
-    background-size: cover; /* make it fill the header */
-
-    background-position: center; /* center the image */
-    background-repeat: no-repeat;
-    color: white; /* adjust text color for visibility */
-    padding: 200px 200px; /* gives the header some height */
-    text-align: center;
+  height: 400px;
+  background-image: url('./images/logos/SpriteWareLogo1X2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .studio-logo {
@@ -141,10 +130,12 @@ img {
 
 /* Style the links inside the navigation bar */
 .topnav {
-    width: 1000px; /* or max-width */
-    margin: 0 auto; /* centers the whole navbar */
-    background-color: #0a0a0a;
-    overflow: hidden; /* clears the floats */
+  display: flex;
+  justify-content: center;   /* or space-around/space-between */
+  flex-wrap: wrap;           /* prevents overflow */
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
 }
 
     .topnav a {
@@ -175,3 +166,55 @@ img {
     flex-shrink: 0; /* prevents flexbox from shrinking it */
 }
 
+
+.carousel-scene {
+  width: 600px;
+  height: 400px;
+  margin: auto;
+  perspective: 1000px;
+  padding: 200px 35%;
+    position: right;
+      -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.carousel {
+  width: 55%;
+  height: 55%;
+  position: relative;
+  transform-style: preserve-3d;
+  cursor: grab;
+  
+}
+
+.carousel:active {
+  cursor: grabbing;
+}
+
+/* 3D face */
+.item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  pointer-events: auto; /* allow interaction */
+}
+
+p {
+  background-color: black;
+  color: white; /* important so text stays readable */
+    padding: 0.75rem 1rem;
+}
+
+.itemHead {
+  background-color: black;
+  color: white; /* important so text stays readable */
+    padding: 0.75rem 1rem;
+}
