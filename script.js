@@ -1,12 +1,12 @@
 const carousel = document.querySelector('.carousel');
-const items = carousel.querySelectorAll('.item'); // videos are wrapped in .item
+const items = carousel.querySelectorAll('.item'); 
 
 let angle = 0;
 const itemCount = items.length;
 const rotateStep = 360 / itemCount;
 const radius = 400;
 
-// Arrange items in a circle
+
 items.forEach((item, index) => {
   item.style.transform = `
     rotateY(${index * rotateStep}deg)

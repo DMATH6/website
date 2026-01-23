@@ -128,11 +128,11 @@ img {
     font-size: 50px;
 }
 
-/* Style the links inside the navigation bar */
+
 .topnav {
   display: flex;
-  justify-content: center;   /* or space-around/space-between */
-  flex-wrap: wrap;           /* prevents overflow */
+  justify-content: center;  
+  flex-wrap: wrap;          
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
@@ -147,13 +147,13 @@ img {
         font-size: 25px;
     }
 
-    /* Change the color of links on hover */
+   
     .topnav a:hover {
         background-color: #ddd;
         color: black;
     }
 
-    /* Add a color to the active/current link */
+    
     .topnav a.active {
         background-color: #04AA6D;
         color: white;
@@ -162,8 +162,8 @@ img {
 .team-img {
     width: 500px;
     height: 500px;
-    object-fit: cover; /* keeps aspect ratio, crops if needed */
-    flex-shrink: 0; /* prevents flexbox from shrinking it */
+    object-fit: cover; 
+    flex-shrink: 0;
 }
 
 
@@ -174,9 +174,9 @@ img {
   perspective: 1000px;
   padding: 200px 35%;
     position: right;
-      -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
+      -webkit-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none; 
 }
 
 .carousel {
@@ -192,7 +192,7 @@ img {
   cursor: grabbing;
 }
 
-/* 3D face */
+
 .item {
   position: absolute;
   width: 100%;
@@ -204,17 +204,17 @@ img {
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
-  pointer-events: auto; /* allow interaction */
+  pointer-events: auto; 
 }
 
 p {
   background-color: black;
-  color: white; /* important so text stays readable */
+  color: white; 
     padding: 0.75rem 1rem;
 }
 
 .itemHead {
   background-color: black;
-  color: white; /* important so text stays readable */
+  color: white; 
     padding: 0.75rem 1rem;
 }
