@@ -21,38 +21,34 @@ document.querySelectorAll('.carousel').forEach(carousel => {
 
     function startDrag(e) {
         isDragging = true;
-        startX = e.touches ? e.touches[0].clientX : e.clientX;
+        startX = e.clientX;
+        carousel.setPointerCapture(e.pointerId);
         carousel.style.transition = 'none';
     }
 
     function drag(e) {
         if (!isDragging) return;
 
-        const x = e.touches ? e.touches[0].clientX : e.clientX;
-        const deltaX = x - startX;
-
+        const deltaX = e.clientX - startX;
         angle = currentRotation + deltaX * 0.3;
         carousel.style.transform = `rotateY(${angle}deg)`;
     }
 
-    function endDrag() {
+    function endDrag(e) {
         if (!isDragging) return;
 
         isDragging = false;
         currentRotation = angle;
+        carousel.releasePointerCapture(e.pointerId);
         carousel.style.transition = 'transform 0.5s ease-out';
     }
 
-    carousel.addEventListener('mousedown', startDrag);
-    carousel.addEventListener('touchstart', startDrag);
+    carousel.addEventListener('pointerdown', startDrag);
+    carousel.addEventListener('pointermove', drag);
+    carousel.addEventListener('pointerup', endDrag);
+    carousel.addEventListener('pointercancel', endDrag);
 
-    window.addEventListener('mousemove', drag);
-    window.addEventListener('touchmove', drag);
-
-    window.addEventListener('mouseup', endDrag);
-    window.addEventListener('touchend', endDrag);
-
-    // Video visibility logic (per carousel)
+    // Video visibility
     function updateVideos() {
         videos.forEach(video => {
             const rect = video.getBoundingClientRect();
