@@ -9,57 +9,67 @@ document.querySelectorAll('.carousel').forEach(carousel => {
 
     const itemCount = items.length;
     const rotateStep = 360 / itemCount;
-    const radius = 400;
+
+    // Dynamically set radius based on screen width
+    let radius = window.innerWidth < 768 ? 150 : 400;
+
+    // Recalculate radius on resize
+    window.addEventListener('resize', () => {
+        radius = window.innerWidth < 768 ? 150 : 400;
+        items.forEach((item, index) => {
+            item.style.transform = `
+              rotateY(${index * rotateStep}deg)
+              translateZ(${radius}px)
+            `;
+        });
+    });
 
     // Position items
     items.forEach((item, index) => {
         item.style.transform = `
-      rotateY(${index * rotateStep}deg)
-      translateZ(${radius}px)
-    `;
+          rotateY(${index * rotateStep}deg)
+          translateZ(${radius}px)
+        `;
     });
 
     function startDrag(e) {
         isDragging = true;
-        startX = e.clientX;
-        carousel.setPointerCapture(e.pointerId);
+        startX = e.clientX || e.touches?.[0].clientX;
         carousel.style.transition = 'none';
     }
 
     function drag(e) {
         if (!isDragging) return;
-
-        const deltaX = e.clientX - startX;
+        const clientX = e.clientX || e.touches?.[0].clientX;
+        const deltaX = clientX - startX;
         angle = currentRotation + deltaX * 0.3;
         carousel.style.transform = `rotateY(${angle}deg)`;
     }
 
-    function endDrag(e) {
-        if (!isDragging) return;
-
+    function endDrag() {
         isDragging = false;
         currentRotation = angle;
-        carousel.releasePointerCapture(e.pointerId);
         carousel.style.transition = 'transform 0.5s ease-out';
     }
 
+    // Event listeners for both mouse and touch
     carousel.addEventListener('pointerdown', startDrag);
     carousel.addEventListener('pointermove', drag);
     carousel.addEventListener('pointerup', endDrag);
     carousel.addEventListener('pointercancel', endDrag);
+    carousel.addEventListener('touchstart', startDrag);
+    carousel.addEventListener('touchmove', drag);
+    carousel.addEventListener('touchend', endDrag);
 
-    // Video visibility
+    // Video visibility on mobile/desktop
     function updateVideos() {
         videos.forEach(video => {
             const rect = video.getBoundingClientRect();
             const center = window.innerWidth / 2;
-            const visible =
-                Math.abs(rect.left + rect.width / 2 - center) < 150;
-
+            const visible = Math.abs(rect.left + rect.width / 2 - center) < 150;
             visible ? video.play() : video.pause();
         });
     }
-
     setInterval(updateVideos, 300);
 
     carousel.addEventListener('dragstart', e => e.preventDefault());
