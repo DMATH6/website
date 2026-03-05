@@ -86,16 +86,13 @@ a {
 .media-sequence iframe {
     width: 100%;
     max-width: 600px; /* desktop cap */
-    height: auto;
+    height: 500px;
     display: block;
     margin: 15px auto;
     border-radius: 8px;
 }
 
-/* Optional: reduce iframe height */
-.media-sequence iframe {
-    max-height: 400px;
-}
+
 
 /* =======================
    Buttons (if any)
